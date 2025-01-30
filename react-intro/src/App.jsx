@@ -1,76 +1,87 @@
 import React from 'react'
-const DisplayProduct=(props)=>{
-    return (
-      <div
+
+
+const Card=(props)=>{
+    return(
+        <div 
         style={{
-          display: "flex",
-          flexDirection: "column",
-          width: "400px",
-          boxShadow:
-            "rgba(0, 0, 0, 0.2) 0px 4px 8px, rgba(0, 0, 0, 0.1) 0px 2px 4px",
-          padding: "20px",
-          alignItems: "center",
-          borderRadius: "10px",
-          backgroundColor: "#fff",
-        }}
-      >
-        <h1>Product Card</h1>
-        <img src={props.image} alt="ProductImage" height={400} width={350} />
-        <h4>{props.title}</h4>
-        <p>{props.description}</p>
-      </div>
-    );
-};
+            border:'1px solid black',
+            width:'400px',
+            padding:'10px',
+            display:'flex',
+            flexDirection:'column',
+            justifyContent:'center',
+            alignItems:'center',
+        }}>
+            <h1>{props.name}</h1>
+            <p>{props.description}</p>
+
+        </div>
+    )
+}
 
 const App = () => {
+    //alternative1
+    // const person1 ={
+    //     name:"Rohit Maharjan",
+    //     description:"He is a good boy."
+    // };
+    // const person2 = {
+    //     name: "Presha Shrestha",
+    //     description: "She is a good girl",
+    // };
+    // const person3 = {
+    //     name: "Ronit Maharjan",
+    //     description: "He is a good boy.",
+    // };
+    // const person4 = {
+    //     name: "Riya Maharjan",
+    //     description: "She is a good girl.",
+    // };
+    //alternative 3
+    const personList = [{
+      id:1,
+      name: "Rohit Maharjan",
+      description: "He is a good boy.",
+    },
+    {
+        id:2,
+      name: "Presha Shrestha",
+      description: "She is a good girl",
+    },
+    {
+        id:3,
+      name: "Ronit Maharjan",
+      description: "He is a good boy.",
+    },
+    {
+        id:4,
+      name: "Riya Maharjan",
+      description: "She is a good girl.",
+    }];
   return (
     <div
       style={{
         display: "flex",
         gap: "1rem",
         flexWrap: "wrap",
-        justifyContent: "center",
-        alignments: "Center",
-        margin: "4rem",
       }}
     >
-      <DisplayProduct
-        image={
-          "https://skinvaletkw.com/cdn/shop/files/PDP-lip-case-1-d_2000x_a8355ff5-971d-4cdf-bd04-78de91f9eff5.webp?v=1714864821"
-        }
-        title={"Lip Case"}
-        description={
-          " A silicone, bubble case for your phone that keeps your lip on hand.Our design has a silky, soft touch feel and a puffy back for easy gripping."
-        }
-      />
-
-      <DisplayProduct
-        image={
-          "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRSd8idnAhKLghGZHhgFPpxCSvd0rje9xMR2h2aROIPJtYcUZiLRjILwuTonKgrnAD7cCI&usqp=CAU"
-        }
-        title={"Lip Case"}
-        description={
-          " A silicone, bubble case for your phone that keeps your lip on hand.Our design has a silky, soft touch feel and a puffy back for easy gripping."
-        }
-      />
-      <DisplayProduct
-        image={
-          "https://i5.walmartimages.com/seo/Rhode-Phone-Case-Lip-Gloss-Phone-Case-Cute-for-Women-Girls-Protective-Silicone-Shockproof-Slim-Funny-Stylish-Phone-Case_7bff3c78-03c5-45bc-8c98-ecf7d6acf208.db30e1c0ab3d32626cc8e3e8e7031c8f.jpeg"
-        }
-        title={"Lip Case"}
-        description={
-          " A silicone, bubble case for your phone that keeps your lip on hand.Our design has a silky, soft touch feel and a puffy back for easy gripping."
-        }
-      />
-      <DisplayProduct
-        image={
-          "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTap4zRw7A-udXLRoA9bzloEDiuC6C3Ic0tQozcwnxyap13uIT7OK-4E38i0NJ2c-c0VTE&usqp=CAU"
-        }
-        title={"Lip Case"}
-        description={
-          " A silicone, bubble case for your phone that keeps your lip on hand.Our design has a silky, soft touch feel and a puffy back for easy gripping."
-        }
-      />
+        {/* Alternative3 */}
+        {personList.map((item)=>{
+            return(
+                <Card key={item.id} name={item.name} description={item.description}/>
+            );
+        })}
+      {/* Alternative1 */}
+      {/* <Card name={person1.name} description={person1.description} />
+      <Card name={person2.name} description={person2.description} />
+      <Card name={person3.name} description={person3.description} />
+      <Card name={person4.name} description={person4.description} /> */}
+      {/* Alternative */}
+      {/* <Card name={"Rohit Maharjan"} description={"She is a good girl."} />
+      <Card name={"Ronit Maharjan"} description={"He is a punctual boy."} />
+      <Card name={"Riya Maharjan"} description={"She ia a  good girl."} /> */}
     </div>
   );
 }
